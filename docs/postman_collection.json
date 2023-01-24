@@ -1,0 +1,94 @@
+{
+	"variables": [],
+	"info": {
+		"name": "ziggo-test",
+		"_postman_id": "c30e4079-6295-7dc1-d7a3-c390ff161978",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "order",
+			"description": "",
+			"item": [
+				{
+					"name": "Create new order",
+					"request": {
+						"url": "{{service_url}}/order",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productId\": \"12345\",\n    \"email\": \"john.doe@example.com\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get all orders",
+					"request": {
+						"url": "{{service_url}}/order",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productId\": \"12345\",\n    \"email\": \"john.doe@example.com\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get order by ID",
+					"request": {
+						"url": "{{service_url}}/order/{{order_id}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productId\": \"12345\",\n    \"email\": \"john.doe@example.com\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"description": "",
+			"item": [
+				{
+					"name": "Get users from reqres.in",
+					"request": {
+						"url": "https://reqres.in/api/users",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

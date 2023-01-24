@@ -1,0 +1,105 @@
+openapi: 3.0.1
+info:
+  title: Ziggo API
+paths:
+  /order:
+    get:
+      tags:
+      - Read Ziggo Order
+      description: Get all orders
+      operationId: getAllOrders
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderList'
+    post:
+      tags:
+      - Read Ziggo Order
+      description: Create new order
+      operationId: createNewOrder
+      requestBody:
+        description: Consumer email + product ID
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOrderRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int64
+  /order/{id}:
+    get:
+      tags:
+      - Read Ziggo Order
+      description: Get order by ID
+      operationId: getOrderById
+      parameters:
+      - name: id
+        in: path
+        description: Order ID
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderItem'
+components:
+  schemas:
+    CreateOrderRequest:
+      type: object
+      properties:
+        email:
+          type: string
+          writeOnly: true
+        productId:
+          type: integer
+          format: int64
+          writeOnly: true
+    OrderItem:
+      type: object
+      properties:
+        email:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        orderId:
+          type: integer
+          format: int64
+        productId:
+          type: integer
+          format: int64
+    OrderList:
+      type: object
+      properties:
+        orders:
+          type: array
+          writeOnly: true
+          items:
+            $ref: '#/components/schemas/OrderListItem'
+    OrderListItem:
+      type: object
+      properties:
+        email:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        orderId:
+          type: integer
+          format: int64
+        productId:
+          type: integer
+          format: int64
